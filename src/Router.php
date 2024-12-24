@@ -32,13 +32,12 @@ class Router
             if ($resourceValue) {
                 $resourceRoute = str_replace('{id}', $resourceValue, $route);
                 if ($resourceRoute == self::getRoute()) {
-
-                    echo json_encode($callback($resourceValue));
+                    ((new $callback[0])->{$callback[1]}());
                     exit();
                 }
             }
             if ($route == self::getRoute()) {
-                json_encode($callback());
+                ((new $callback[0])->{$callback[1]}());
                 exit();
             }
         }

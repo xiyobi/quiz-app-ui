@@ -5,7 +5,8 @@ use App\Router;
 use Controllers\UserController;
 use Controllers\TodoController;
 
-Router::get('/',[TodoController::class,'show']);
+Router::get('/todos',[TodoController::class,'show']);
+Router::get('/users',[UserController::class,'index']);
 
 //
 //Router::get('/',fn()=>(new UserController())->index());
