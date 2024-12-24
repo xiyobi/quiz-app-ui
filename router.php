@@ -2,13 +2,12 @@
 
 use App\Router;
 
-$router = new Router();
 
-
-if ($router->isApiCall()) {
+if (Router::isApiCall()) {
     require 'routes/api.php';
     exit();
 }
-require 'routes/api.php';
-//require 'routes/web.php';
+//require 'routes/api.php';
+require 'routes/web.php';
+
 

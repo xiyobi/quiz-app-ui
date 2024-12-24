@@ -1,20 +1,14 @@
 <?php
 
 use App\Router;
+use controllers\UserController;
 
-Router::get('/',function (){
-    echo 'Request get';
-    exit();
-});
-Router::post('/',function (){
-    echo 'Request post';
-    exit();
-});
-Router::delete('/',function (){
-    echo 'Request delete';
-    exit();
-});
-Router::put('/',function (){
-    echo 'Request put';
-    exit();
-});
+Router::get('/',[UserController::class,'index']);
+Router::post('/',[UserController::class,'index']);
+Router::put('/',[UserController::class,'index']);
+Router::delete('/',[UserController::class,'index']);
+
+Router::get('/{id}',[UserController::class,'index']);
+Router::post('/{id}',[UserController::class,'index']);
+Router::put('/{id}',[UserController::class,'index']);
+Router::delete('/{id}',[UserController::class,'index']);
