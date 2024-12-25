@@ -4,8 +4,8 @@ namespace controllers;
 
 class TodoController
 {
-    public function show(): string
+    public function show()
     {
-        return "Todo show";
+        echo "Todo show";
     }
 }
