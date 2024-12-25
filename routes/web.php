@@ -6,7 +6,7 @@
     //use Controllers\TodoController;
    use App\Models\User;
    $user=new User();
-   dd($user->create("Hasanboyeva",'hasanova@gmail.com','123456789'));
+   dd($user->create("Hasanov",'hasanboyeva@gmail.com','123456789'));
 //dd($user->getUser("Ulug'bek@gmail.com",'123456789'));
 
     //Router::get('/todos',[TodoController::class,'show']);
