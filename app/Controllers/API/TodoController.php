@@ -1,6 +1,6 @@
 <?php
 
-namespace controllers;
+namespace Controllers\API;
 
 class TodoController
 {

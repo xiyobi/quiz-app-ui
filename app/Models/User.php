@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
-use App\Models\DB;
 use App\Traits\HasApiTokens;
-use PDO;
+
 class  User extends DB
 {
     use HasApiTokens;
@@ -21,7 +20,7 @@ class  User extends DB
         $this->createApiToken($userId);
         return true;
     }
-    public function getUser(string $email, string $password)
+    public function getUser(string $email, string $password): bool
     {
         $query = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn
