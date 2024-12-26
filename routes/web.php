@@ -1,9 +1,7 @@
 <?php
 
-    use Source\Router;
-
-
 use App\Models\User;
+
 
 $user=new User();
 //   dd($user->create("Hasanov",'hasanboyeva1@gmail.com1','123456789'));
