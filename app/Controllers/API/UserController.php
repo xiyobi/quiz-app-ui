@@ -2,13 +2,13 @@
 
 namespace App\Controllers\API;
 
-use app\Models\User;
-
+use App\Models\User;
 use App\Traits\Validator;
 
 class UserController
 {
     use Validator;
+
     public function store()
     {
         $userData = $this-> validate([
@@ -21,6 +21,6 @@ class UserController
 
         $user = new User();
         $user->create($userData['full_name'],$userData['email'],$userData['password']);
-        exit();
+        apiResponse(['massage' => 'User created successfully'], 201);
     }
 }
