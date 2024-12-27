@@ -1,5 +1,5 @@
 <?php
-namespace App\Http;
+namespace Src;
 class Router
 {
     public  $currentRoute;

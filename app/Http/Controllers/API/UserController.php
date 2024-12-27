@@ -21,6 +21,24 @@ class UserController
 
         $user = new User();
         $user->create($userData['full_name'],$userData['email'],$userData['password']);
-        apiResponse(['massage' => 'User created successfully'], 201);
+        apiResponse(
+            ['massage' => 'User created successfully',
+            'token'=>$user->api_token],
+            201);
+    }
+
+    public function  log_in(): void
+    {
+        $userData = $this-> validate([
+            'email' => 'string',
+            'password' => 'string',
+        ]);
+        $user= new User();
+        if($user->getUser($userData['email'],$userData['password'])){
+            apiResponse(
+                ['massage' => 'User logged in successfully',
+                    'token'=>$user->api_token]);
+        }
+
     }
 }

@@ -20,7 +20,7 @@ class  User extends DB
         $this->createApiToken($userId);
         return true;
     }
-    public function getUser(string $email, string $password): bool
+    public function getUser(string $email, string $password)
     {
         $query = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn
@@ -30,6 +30,7 @@ class  User extends DB
         );
         $user = $stmt->fetch();
         if ($user && password_verify($password, $user->password)) {
+            $this->createApiToken($user->id);
             return true;
         }
         else

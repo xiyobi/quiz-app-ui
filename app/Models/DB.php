@@ -9,7 +9,7 @@ class DB
     private string $db_pass;
     private string $db_host;
     private string $db_name;
-    protected PDO $conn;
+    public PDO $conn;
     public function __construct()
     {
         $this->db_user = $_ENV['DB_USER'];
