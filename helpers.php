@@ -5,7 +5,7 @@ use JetBrains\PhpStorm\NoReturn;
 function view($page, $data = []): void
 {
     extract($data);
-    require 'views/'.$page. '.php';
+    require 'resources/views/'.$page. '.php';
 }
 #[NoReturn] function
 redirect(string $url): void
@@ -13,7 +13,6 @@ redirect(string $url): void
     header("Location: $url");
     exit();
 }
-
 #[NoReturn] function apiResponse($data, $status=200): void
 {
     header("Content-Type: application/json");

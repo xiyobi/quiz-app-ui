@@ -38,4 +38,13 @@ class  User extends DB
             return false;
         }
     }
+    public function destroy(): void
+    {
+        $query = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->conn
+            ->prepare($query);
+        $stmt->execute(
+            [':id' => $this->id]
+        );
+    }
 }
