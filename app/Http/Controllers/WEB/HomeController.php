@@ -12,4 +12,13 @@ class HomeController
     {
         view("about");
     }
+    public function login(): void
+    {
+        view("auth/login");
+    }
+    public function register(): void
+    {
+        view("auth/register");
+    }
+
 }

@@ -47,7 +47,7 @@
 <!-- Hero Section -->
 <div class="bg-indigo-600 text-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">About QuizApp</h1>
+        <a href="QuizApp"><h1 class="text-4xl md:text-5xl font-bold mb-4">About QuizApp</h1></a>
         <p class="text-xl md:text-2xl">Empowering Learning Through Interactive Quizzes</p>
     </div>
 </div>
