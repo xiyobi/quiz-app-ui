@@ -2,7 +2,7 @@
 namespace Src;
 class Router
 {
-    public  $currentRoute;
+    public string|array|int|null|false $currentRoute;
     public function __construct(){
         $this->currentRoute=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

@@ -24,7 +24,7 @@ class UserController
         apiResponse(
             ['massage' => 'User created successfully',
             'token'=>$user->api_token],
-            201);
+            200);
     }
 
     public function  log_in(): void
