@@ -20,7 +20,7 @@
                     </a>
                 </p>
             </div>
-            <form id="login-form" class="mt-8 space-y-6" action="#" method="POST" onsubmit="login(event)">
+            <form id="login-form" class="mt-8 space-y-6" action="/dashboard" method="POST" onsubmit="login()">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label for="email" class="sr-only">Email address</label>
@@ -44,6 +44,7 @@
                         <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
                             Forgot your password?
                         </a>
+                        <div id="error"></div>
                     </div>
                 </div>
 
@@ -56,6 +57,28 @@
         </form>
     </div>
 </div>
-<script src="js/main.js"></script>
+<script>
+    async function login() {
+        let form = document.getElementById("login-form"),
+            formData = new FormData(form);
+        const { default: apiFetch } = await import('./js/utils/allFetch.js');
+        await apiFetch('/login', {
+            method: "Post",
+            body: formData
+        }).then(data =>{
+            localStorage.setItem('token', data.token);
+            window.location.href='/dashboard';
+        })
+            .catch((error)=>{
+            console.error(error.data.errors);
+            Object.keys(error.data.errors).forEach(err => {
+                document.getElementById('error').innerHTML += `
+                <p class="text-red-500 mt-1">${error.data.errors[err]}</p>`;
+
+            })
+        });
+    }
+
+</script>
 </body>
 </html>
