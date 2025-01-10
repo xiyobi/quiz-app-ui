@@ -30,18 +30,20 @@ class Router
 
     }
 
-    public static function runCallback(string $route, callable|array $callback): void
+    public static function runCallback(string $route, callable|array $callback, ?string $middleware= null): void
     {
         if (gettype($callback) === 'array') {
             $resourceValue = self::getResourse($route);
             if ($resourceValue) {
                 $resourceRoute = str_replace('{id}', $resourceValue, $route);
                 if ($resourceRoute == self::getRoute()) {
+                    self::middleware($middleware);
                     ((new $callback[0])->{$callback[1]}());
                     exit();
                 }
             }
             if ($route == self::getRoute()) {
+                self::middleware($middleware);
                 ((new $callback[0])->{$callback[1]}());
                 exit();
             }
@@ -50,19 +52,22 @@ class Router
         if ($resourceValue) {
             $resourceRoute = str_replace('{id}', $resourceValue, $route);
             if ($resourceRoute == self::getRoute()) {
+                self::middleware($middleware);
                 $callback($resourceValue);
                 exit();
             }
         }
         if ($route == self::getRoute()) {
+            self::middleware($middleware);
             $callback();
             exit();
         }
     }
 
-    public static function get(string $route, callable|array $callback): void
+    public static function get(string $route, callable|array $callback, ?string $middleware=null): void
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+//            self::middleware($middleware);
             self::runCallback($route, $callback);
         }
     }
@@ -102,6 +107,18 @@ class Router
             apiResponse(['error' => 'Not Found'], 404);
         }
         view('404');
+    }
+    public static function middleware(?string $middleware=null):void
+    {
+        if ($middleware){
+            $middlewareConfig = require '../config/middleware.php';
+            if (is_array($middlewareConfig)){
+                if (array_key_exists($middleware,$middlewareConfig)){
+                    $middlewareClass = $middlewareConfig[$middleware];
+                    (new $middlewareClass)->handle();
+                }
+            }
+        }
     }
 
 
