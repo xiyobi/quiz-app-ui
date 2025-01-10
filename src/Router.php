@@ -3,28 +3,33 @@ namespace Src;
 class Router
 {
     public string|array|int|null|false $currentRoute;
-    public function __construct(){
-        $this->currentRoute=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+    public function __construct()
+    {
+        $this->currentRoute = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
     }
-    public  static function getRoute(): string|false|null|int|array{
+
+    public static function getRoute(): string|false|null|int|array
+    {
         return (new static())->currentRoute;
 
     }
 
-    public static  function  getResourse($route): false|string
+    public static function getResourse($route): false|string
     {
         $resourceIndex = mb_stripos($route, '{id}');
         if ($resourceIndex === false) {
             return false;
         }
-        $resourceValue =substr(self::getRoute(),$resourceIndex);
+        $resourceValue = substr(self::getRoute(), $resourceIndex);
         if ($limit = mb_stripos($resourceValue, '/')) {
             return substr($resourceValue, 0, $limit);
         }
         return $resourceValue ?: false;
 
     }
+
     public static function runCallback(string $route, callable|array $callback): void
     {
         if (gettype($callback) === 'array') {
@@ -56,11 +61,11 @@ class Router
     }
 
     public static function get(string $route, callable|array $callback): void
-{
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        self::runCallback($route, $callback);
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            self::runCallback($route, $callback);
+        }
     }
-}
 
     public static function post(string $route, callable|array $callback): void
     {
@@ -69,6 +74,7 @@ class Router
         }
 
     }
+
     public static function put(string $route, callable|array $callback): void
     {
         if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'PUT')
@@ -89,5 +95,14 @@ class Router
     {
         return mb_stripos(self::getRoute(), '/api') === 0;
     }
+
+    public static function notFound(string $route = 'api'): bool
+    {
+        if (self::isApiCall()) {
+            apiResponse(['error' => 'Not Found'], 404);
+        }
+        view('404');
+    }
+
 
 }
