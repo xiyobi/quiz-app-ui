@@ -7,8 +7,7 @@ function view($page, $data = []): void
     extract($data);
     require 'resources/views/'.$page. '.php';
 }
-#[NoReturn] function
-redirect(string $url): void
+#[NoReturn] function redirect(string $url): void
 {
     header("Location: $url");
     exit();
