@@ -8,8 +8,8 @@ trait Validator
     {
         $requiredKeys = [];
 
-        foreach ($data as $key => $value) {
-            if (array_key_exists($key, $_REQUEST)) {
+        foreach ($data as $key => $value ) {
+            if (array_key_exists($key, $_REQUEST) and !empty($_REQUEST[$key])) {
                 continue;
             }
             $requiredKeys[$key] = $key . 'is required';
