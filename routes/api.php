@@ -10,3 +10,5 @@ Router::delete('/api/delete', [UserController::class, 'delete']);
 
 Router::post('/api/quizzes', [QuizController::class, 'store']);
 
+Router::notFound();
+
