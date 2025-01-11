@@ -39,16 +39,20 @@ class UserController
                 ['massage' => 'User logged in successfully',
                     'token'=>$user->api_token]);
         }
+        apiResponse([
+            'errors'=>[
+                'massage' => 'User not found',
+            ],
+        ],401);
 
     }
     public function show()
     {
-        apiResponse(
-            [
-                'user'=>[
-                    'name'=>'Fazliddin',
-                    'email'=>'exam@gmail.com'
-                ],
+        $userData = $this-> validate([
+
+            'full_name' => 'string',
+            'email' => 'string',
+
         ]);
     }
 }
