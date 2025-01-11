@@ -2,12 +2,12 @@
 
 namespace Src\middleware;
 
-use Src\Auth as apiAuth;
+use Src\middleware\Middleware;
 
-class Auth
+class AuthMiddleware implements Middleware
 {
-    public function handle()
+    public function handle():void
     {
-        apiAuth::check();
+        \Src\Auth::check();
     }
 }

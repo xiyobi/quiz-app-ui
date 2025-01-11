@@ -20,16 +20,16 @@
             </div>
         </div>
         <nav class="flex-grow p-4">
-            <a href="dashboard.html" class="block p-3 mb-2 text-gray-800 bg-gray-100 rounded-lg">
+            <a href="/dashboard" class="block p-3 mb-2 text-gray-800 bg-gray-100 rounded-lg">
                 <i class="fas fa-home mr-2"></i> Dashboard
             </a>
-            <a href="my-quizzes.html" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <a href="/my_quizzes" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                 <i class="fas fa-book mr-2"></i> My Quizzes
             </a>
-            <a href="create-quiz.html" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <a href="/create_quiz" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                 <i class="fas fa-plus mr-2"></i> Create Quiz
             </a>
-            <a href="statistics.html" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <a href="/statistic" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                 <i class="fas fa-chart-bar mr-2"></i> Statistics
             </a>
         </nav>
@@ -46,8 +46,8 @@
                 <div class="flex items-center space-x-4">
 
                     <div class="flex items-center space-x-2">
-                        <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
-                        <span class="text-gray-700 font-medium">John Doe</span>
+                        <img src="https://images.newscientist.com/wp-content/uploads/2024/05/07141222/SEI_203029555.jpg" alt="Profile" class="w-10 h-10 rounded-full">
+                        <span class="text-gray-700 font-medium">Axror</span>
                     </div>
                 </div>
             </div>
@@ -58,12 +58,12 @@
             <!-- Quick Actions -->
             <div class="mb-8">
                 <div class="flex flex-wrap gap-4">
-                    <a href="create-quiz.html" class="flex-1 min-w-[200px] bg-blue-600 text-white p-4 rounded-lg shadow hover:bg-blue-700 transition">
+                    <a href="/create_quiz" class="flex-1 min-w-[200px] bg-blue-600 text-white p-4 rounded-lg shadow hover:bg-blue-700 transition">
                         <i class="fas fa-plus mb-2 text-2xl"></i>
                         <h3 class="font-semibold">Create New Quiz</h3>
                         <p class="text-sm opacity-90">Start creating a new quiz</p>
                     </a>
-                    <a href="statistics.html" class="flex-1 min-w-[200px] bg-green-600 text-white p-4 rounded-lg shadow hover:bg-green-700 transition">
+                    <a href="/statistic" class="flex-1 min-w-[200px] bg-green-600 text-white p-4 rounded-lg shadow hover:bg-green-700 transition">
                         <i class="fas fa-chart-line mb-2 text-2xl"></i>
                         <h3 class="font-semibold">View Statistics</h3>
                         <p class="text-sm opacity-90">Check your progress</p>
