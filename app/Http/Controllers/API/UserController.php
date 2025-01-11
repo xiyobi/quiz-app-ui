@@ -41,4 +41,14 @@ class UserController
         }
 
     }
+    public function show()
+    {
+        apiResponse(
+            [
+                'user'=>[
+                    'name'=>'Fazliddin',
+                    'email'=>'exam@gmail.com'
+                ],
+        ]);
+    }
 }
