@@ -19,7 +19,7 @@
                 </a>
             </p>
         </div>
-        <form id="register-form" class="mt-8 space-y-6" action="#" method="POST">
+        <form id="register-form" class="mt-8 space-y-6" method="POST" onsubmit="register()">
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
                     <label for="name" class="sr-only">Full name</label>
@@ -56,7 +56,7 @@
             </div>
 
             <div>
-                <button type="button" onclick="register()"
+                <button type="submit"
                         class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Create Account
                 </button>
@@ -66,6 +66,7 @@
 </div>
 <script>
     async function register() {
+        event.preventDefault();
         let form = document.getElementById("register-form"),
             formData = new FormData(form);
         const { default: apiFetch } = await import('./js/utils/allFetch.js');
@@ -78,6 +79,7 @@
         })
             .catch((error)=>{
                 console.error(error.data.errors);
+                document.getElementById('error').innerHTML = "";
                 Object.keys(error.data.errors).forEach(err => {
                     document.getElementById('error').innerHTML += `
                 <p class="text-red-500 mt-1">${error.data.errors[err]}</p>`;
@@ -85,6 +87,7 @@
                 })
             });
     }
+
 </script>
 </body>
 </html>
