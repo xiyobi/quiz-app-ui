@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Models\User;
 use App\Traits\Validator;
+use Src\Auth;
 
 class UserController
 {
@@ -48,11 +49,9 @@ class UserController
     }
     public function show()
     {
-        $userData = $this-> validate([
-
-            'full_name' => 'string',
-            'email' => 'string',
-
-        ]);
+        $user = Auth::user();
+        apiResponse([
+            'user' => $user,
+        ],200);
     }
 }
