@@ -12,9 +12,9 @@ class UserController
     {
         view('dashboard/create-quiz');
     }
-    public function my_quizzes():void
+    public function quizzes():void
     {
-        view('dashboard/my_quizzes');
+        view('dashboard/quizzes');
     }
     public function statistic():void
     {
