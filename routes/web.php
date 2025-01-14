@@ -12,7 +12,7 @@ Router::get('/login', [HomeController::class, 'login']);
 Router::get('/register', [HomeController::class, 'register']);
 Router::get('/dashboard', [UserController::class, 'home']);
 Router::get('/create_quiz', [UserController::class, 'create_quiz']);
-Router::get('/my_quizzes', [UserController::class, 'my_quizzes']);
+Router::get('/quizzes', [UserController::class, 'quizzes']);
 Router::get('/statistic', [UserController::class, 'statistic']);
 
 
