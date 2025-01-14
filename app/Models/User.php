@@ -47,4 +47,14 @@ class  User extends DB
             [':id' => $this->id]
         );
     }
+    public function getUserById(int $id): mixed
+    {
+        $query = "SELECT id, full_name, email, updated_at, created_at FROM users WHERE id = :id";
+        $stmt = $this->conn
+            ->prepare($query);
+        $stmt->execute(
+            [':id' =>$id]
+        );
+        return $stmt->fetch();
+    }
 }
