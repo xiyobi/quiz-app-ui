@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Quiz App</title>
-    <link rel="stylesheet" href="css/output.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+<?php require '../resources/views/componets/header.php'; ?>
+<script src=" js/dashboard/getUserInfo.js"></script>
 <body class="bg-gray-100">
 <div class="min-h-screen flex">
     <!-- Sidebar -->
@@ -23,7 +16,7 @@
             <a href="/dashboard" class="block p-3 mb-2 text-gray-800 bg-gray-100 rounded-lg">
                 <i class="fas fa-home mr-2"></i> Dashboard
             </a>
-            <a href="/my_quizzes" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <a href="/quizzes" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                 <i class="fas fa-book mr-2"></i> My Quizzes
             </a>
             <a href="/create_quiz" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
@@ -47,7 +40,7 @@
 
                     <div class="flex items-center space-x-2">
                         <img src="https://images.newscientist.com/wp-content/uploads/2024/05/07141222/SEI_203029555.jpg" alt="Profile" class="w-10 h-10 rounded-full">
-                        <span class="text-gray-700 font-medium">Axror</span>
+                        <span class="text-gray-700 font-medium" id="username"></span>
                     </div>
                 </div>
             </div>
@@ -146,5 +139,5 @@
         </main>
     </div>
 </div>
-</body>
-</html>
+
+<?php require '../resources/views/componets/footer.php'; ?>

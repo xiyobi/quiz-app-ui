@@ -21,5 +21,4 @@
             </div>
         </section>
     </div>
-</body>
-</html>
+<?php require '../resources/views/componets/footer.php'; ?>
