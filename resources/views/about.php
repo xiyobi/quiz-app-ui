@@ -11,8 +11,8 @@
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
                     <a href="#how-it-works" class="text-gray-600 hover:text-gray-900">How It Works</a>
-                    <a href="login.html" class="text-gray-600 hover:text-gray-900">Login</a>
-                    <a href="add-quiz.php"
+                    <a href="/-login" class="text-gray-600 hover:text-gray-900">Login</a>
+                    <a href="/add-quiz"
                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                         Register
                     </a>

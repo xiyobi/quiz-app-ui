@@ -16,8 +16,12 @@ function apiFetch(uri,options={}){
         .then(async response => {
         if (!response.ok) {
             if (response.status === 401) {
-                localStorage.removeItem('token');
-                window.location.href;
+                if(window.location.pathname==='/login' || window.location.pathname==='/register'){
+                }
+                else {
+                    localStorage.removeItem('token');
+                    window.location.href;
+                }
             }
             const error=new Error('http error');
             error.data=await response.json();
