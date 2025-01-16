@@ -37,7 +37,7 @@
                     </div>
 
                     <!-- Main Form -->
-                    <form class="space-y-4" id="quizForm" onsubmit="create_quiz()">
+                    <form class="space-y-4" id="quizForm" onsubmit="createQuiz()">
                         <!-- Quiz Details Section -->
                         <div class="bg-white p-6 rounded-lg shadow-md">
                             <h3 class="text-xl font-semibold text-gray-800 mb-4">Quiz Details</h3>
@@ -129,14 +129,13 @@
 </div>
 </div>
 <script>
-    async function create_quiz() {
+    async function createQuiz() {
         event.preventDefault();
         let form = document.getElementById("quizForm"),
             formData = new FormData(form);
         const { default: apiFetch } = await import('/js/utils/allFetch.js');
         await apiFetch('/quizzes', {
-            method: "Post",
-            body: formData
+            method: "Post", body: formData
         }).then(data =>{
             console.log(data);
         })

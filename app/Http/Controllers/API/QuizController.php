@@ -31,16 +31,18 @@ class QuizController
            $quizItems['description'],
             $quizItems['timeLimit'],
        );
-            $questions=$quizItems['questions'];
-
-
-        foreach ($questions as $questionItem) {
+       $questions=$quizItems['questions'];
+       foreach ($questions as $questionItem) {
             $question_id = $question->create($quiz_id, $questionItem['quiz']);
             $correct = $questionItem['correct'];
             foreach ($questionItem['options'] as $key => $optionItem) {
                 $option->create($question_id, $optionItem, $correct == $key);
             }
         }
+       apiResponse([
+           'massage' => 'successfully created'
+       ]);
+
 
     }
 }

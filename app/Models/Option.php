@@ -13,7 +13,7 @@ class Option extends DB{
         $stmt->execute([
             ':question_id' => $questionId,
             ':option_text' => $optionText,
-            ':isCorrect' => $isCorrect ? 1 : 0
+            ':is_correct' => $isCorrect ? 1 : 0
         ]);
         return $this->conn->lastInsertId();
     }
