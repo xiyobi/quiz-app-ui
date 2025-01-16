@@ -10,7 +10,7 @@ class Option extends DB{
         $query = "INSERT INTO options ( question_id,option_text,is_correct,updated_at, created_at)
                 VALUES( :question_id,:option_text,:is_correct,NOW(), NOW())";
         $stmt = $this->conn->prepare($query);
-        return $stmt->execute([
+        $stmt->execute([
             ':question_id' => $questionId,
             ':option_text' => $optionText,
             ':isCorrect' => $isCorrect ? 1 : 0

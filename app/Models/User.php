@@ -3,11 +3,16 @@
 namespace App\Models;
 
 use App\Traits\HasApiTokens;
+use Random\RandomException;
 
 class  User extends DB
 {
     use HasApiTokens;
-    public  function create(string $full_name, string $email, string $password)
+
+    /**
+     * @throws RandomException
+     */
+    public  function create(string $full_name, string $email, string $password): true
     {
         $query = "INSERT INTO users (full_name, email, password,updated_at, created_at) VALUES (:full_name, :email, :password, NOW(), NOW())";
         $this->conn
@@ -20,7 +25,7 @@ class  User extends DB
         $this->createApiToken($userId);
         return true;
     }
-    public function getUser(string $email, string $password)
+    public function getUser(string $email, string $password): bool
     {
         $query = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn
@@ -38,15 +43,7 @@ class  User extends DB
             return false;
         }
     }
-    public function destroy(): void
-    {
-        $query = "DELETE FROM users WHERE id = :id";
-        $stmt = $this->conn
-            ->prepare($query);
-        $stmt->execute(
-            [':id' => $this->id]
-        );
-    }
+ 
     public function getUserById(int $id): mixed
     {
         $query = "SELECT id, full_name, email, updated_at, created_at FROM users WHERE id = :id";

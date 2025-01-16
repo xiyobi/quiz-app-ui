@@ -11,7 +11,7 @@ class Question extends DB
     $query = "INSERT INTO questions ( quiz_id,question_text,updated_at, created_at)
                 VALUES(:quiz_id,:question_text, NOW(), NOW())";
     $stmt = $this->conn->prepare($query);
-    return $stmt->execute([
+    $stmt->execute([
         ':quiz_id' => $quizId,
         ':question_text' => $questionText,
     ]);

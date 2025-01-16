@@ -133,13 +133,12 @@
         event.preventDefault();
         let form = document.getElementById("quizForm"),
             formData = new FormData(form);
-        const { default: apiFetch } = await import('./js/utils/allFetch.js');
+        const { default: apiFetch } = await import('/js/utils/allFetch.js');
         await apiFetch('/quizzes', {
             method: "Post",
             body: formData
         }).then(data =>{
-            localStorage.setItem('token', data.token);
-            window.location.href='/dashboard';
+            console.log(data);
         })
             .catch((error)=>{
                 console.error(error.data.errors);
