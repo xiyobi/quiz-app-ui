@@ -13,7 +13,7 @@
 <body class="bg-gray-100">
 <div class="min-h-screen flex">
     <!-- Sidebar -->
-<?php require '../resources/views/componets/sidebar.php'; ?>
+<?php require '../resources/views/components/sidebar.php'; ?>
 
     <!-- Main Content -->
     <div class="flex-1">
@@ -199,4 +199,4 @@
         }
     });
 </script>
-<?php require '../resources/views/componets/footer.php'; ?>
+<?php require '../resources/views/components/footer.php'; ?>

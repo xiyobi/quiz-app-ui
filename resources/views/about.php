@@ -1,4 +1,4 @@
-<?php require '../resources/views/componets/header.php'; ?>
+<?php require '../resources/views/components/header.php'; ?>
 <body class="bg-gray-50">
 <!-- Navigation -->
 <nav class="bg-white shadow-lg">
@@ -186,4 +186,4 @@
         mobileMenu.classList.toggle('hidden');
     });
 </script>
-<?php require '../resources/views/componets/footer.php'; ?>
+<?php require '../resources/views/components/footer.php'; ?>

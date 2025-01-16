@@ -7,7 +7,7 @@
             </button>
         </div>
     </div>
-    <nav class="flex-grow p-4">
+    <nav class="flex-grow p-4" id = "sideBar">
         <a href="/dashboard" class="block p-3 mb-2 text-gray-800 hover:bg-gray-100 rounded-lg">
             <i class="fas fa-home mr-2"></i> Dashboard
         </a>

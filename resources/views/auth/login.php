@@ -1,4 +1,4 @@
-<?php require '../resources/views/componets/header.php'; ?>
+<?php require '../resources/views/components/header.php'; ?>
 
 <body class="bg-gray-50">
 <div>
@@ -75,5 +75,5 @@
     }
 
 </script>
-    <?php require '../resources/views/componets/footer.php'; ?>
+    <?php require '../resources/views/components/footer.php'; ?>
 

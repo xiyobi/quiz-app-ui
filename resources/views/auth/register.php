@@ -1,4 +1,4 @@
-<?php require '../resources/views/componets/header.php'; ?>
+<?php require '../resources/views/components/header.php'; ?>
 
 <body class="bg-gray-50">
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -47,6 +47,7 @@
                     <a href="#" class="text-indigo-600 hover:text-indigo-500">Terms and Conditions</a>
                 </label>
             </div>
+                <div id="errors"></div>
 
             <div>
                 <button type="submit"
@@ -82,4 +83,4 @@
     }
 
 </script>
-<?php require '../resources/views/componets/footer.php'; ?>
+<?php require '../resources/views/components/footer.php'; ?>
