@@ -7,20 +7,7 @@
             </button>
         </div>
     </div>
-    <nav class="flex-grow p-4">
-        <a href="/dashboard" class="block p-3 mb-2 text-gray-800 hover:bg-gray-100 rounded-lg">
-            <i class="fas fa-home mr-2"></i> Dashboard
-        </a>
-        <a href="/quizzes" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-            <i class="fas fa-book mr-2"></i> My Quizzes
-        </a>
-        <a href="/create_quiz" class="block p-3 mb-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-            <i class="fas fa-plus mr-2"></i> Create Quiz
-        </a>
-        <a href="/statistic" class="block p-3 mb-2 text-gray-600 bg-gray-100 rounded-lg">
-            <i class="fas fa-chart-bar mr-2"></i> Statistics
-        </a>
-    </nav>
+    <nav class="flex-grow p-4" id="sideBar"></nav>
 </aside>
 <script>
     let sideBarItem = [
@@ -31,18 +18,18 @@
         },
         {
             'name': 'My Quizzes',
-            'uri': '/quizzes',
+            'uri': '/dashboard/quizzes',
             'icon': 'fas fa-book mr-2'
         },
         {
             'name': 'Create Quiz',
-            'uri': '/create_quiz',
+            'uri': '/dashboard/create_quiz',
             'icon': 'fas fa-plus mr-2'
 
         },
         {
             'name': 'Statistics',
-            'uri': '/statistic',
+            'uri': '/dashboard/statistic',
             'icon': 'fas fa-chart-bar mr-2'
 
         }
@@ -50,9 +37,9 @@
     ];
     let sideBar = document.getElementById('sideBar');
     sideBarItem.forEach(item => {
-        let isActive = window.location.pathname === item.uri ? 'bg-gray-100' : 'hover: bg-gray-100';
+        let isActive = window.location.pathname === item.uri ? 'bg-gray-100' : 'hover:bg-gray-100';
         sideBar.innerHTML += `<a href="${item.uri}" class="block p-3 mb-2 text-gray-600 ${isActive} rounded-lg">
-                <i class="fas fa-home mr-2"></i> ${item.name}</a>`;
+                <i class="${item.icon}"></i> ${item.name}</a>`;
 
     });
 
