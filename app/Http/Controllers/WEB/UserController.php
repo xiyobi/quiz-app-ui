@@ -20,5 +20,9 @@ class UserController
     {
         view('dashboard/statistic');
     }
+    public function take_quiz():void
+    {
+        view('/quiz/take_quiz');
+    }
 
 }
