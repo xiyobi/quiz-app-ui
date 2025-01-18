@@ -12,6 +12,13 @@ use Src\Auth;
 class QuizController
 {
     use Validator;
+    public function index()
+    {
+        $quizzes = (new Quiz())->getByUserId(Auth::user()->id);
+        apiResponse([
+            'quizzes' => $quizzes,
+        ]);
+    }
     public function store(): void
     {
         $quizItems = $this->validate([

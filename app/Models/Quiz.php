@@ -19,5 +19,12 @@ class Quiz extends DB
         return  $this->conn->lastInsertId();
 
     }
+    public function getByUserId(int $userId): array|bool
+    {
+        $query = "SELECT * FROM quizzes WHERE user_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([':user_id' => $userId]);
+        return $stmt->fetchAll();
+    }
 
 }

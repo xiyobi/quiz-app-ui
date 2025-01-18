@@ -69,12 +69,29 @@
             </div>
 
             <!-- Quiz Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="quiz-form">
                 <!-- Quiz Card 1 -->
+
+            </div>
+        </main>
+    </div>
+</div>
+<script>
+    async function quizzes() {
+        let form = document.getElementById("quiz-form"),
+            formData = new FormData(form);
+        const { default: apiFetch } = await import('/js/utils/allFetch.js'),
+            $quizList = document.getElementById('quiz-form');
+        await apiFetch('/quizzes', {
+            method: "Get"
+        }).then(data =>{
+            console.log(data);
+            data.quizzes.forEach(quiz => {
+                $quizList.innerHTML += `
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-lg font-semibold">Basic Mathematics</h3>
+                            <h3 class="text-lg font-semibold">${quiz.title}</h3>
                             <p class="text-gray-500 text-sm">Mathematics</p>
                         </div>
                         <div class="dropdown">
@@ -85,10 +102,10 @@
                             </button>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-4">Test basic arithmetic and algebraic concepts</p>
+                    <p class="text-gray-600 mb-4">${quiz.description}</p>
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm text-gray-500">10 Questions</span>
-                        <span class="text-sm text-gray-500">15 minutes</span>
+                        <span class="text-sm text-gray-500">Created: ${quiz.created_at}</span>
+                        <span class="text-sm text-gray-500">${quiz.time_limit}</span>
                     </div>
                     <div class="mb-4">
                         <div class="w-full bg-gray-200 rounded-full h-2">
@@ -102,18 +119,17 @@
                         <button class="text-red-600 hover:text-red-800">Delete</button>
                     </div>
                 </div>
+                `;
+            });
+        })
+            .catch((error)=>{
+               alert("errorcha")
+                });
+    }
+    quizzes();
+    function deleteQuiz(id) {
+        console.log(id);
+    }
 
-                <!-- Quiz Card 2 -->
-                <div class="bg-white rounded-lg shadow-sm p-6">
-                    <!-- Similar structure to Quiz Card 1 -->
-                </div>
-
-                <!-- Quiz Card 3 -->
-                <div class="bg-white rounded-lg shadow-sm p-6">
-                    <!-- Similar structure to Quiz Card 1 -->
-                </div>
-            </div>
-        </main>
-    </div>
-</div>
+</script>
 <?php require '../resources/views/components/footer.php'; ?>
