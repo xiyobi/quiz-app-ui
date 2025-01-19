@@ -24,5 +24,11 @@ class UserController
     {
         view('/quiz/take_quiz');
     }
+    public function update(int $id):void
+    {
+        view('dashboard/update-quiz',
+        ['id'=>$id]
+        );
+    }
 
 }
