@@ -31,9 +31,9 @@
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-gray-800">My Quizzes</h2>
                 <div class="flex space-x-4">
-                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                    <a href="/dashboard/create_quiz" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
                         Create New Quiz
-                    </button>
+                    </a >
                     <div class="flex border rounded-lg">
                         <button class="px-3 py-2 bg-white border-r">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -78,15 +78,14 @@
 </div>
 <script>
     async function quizzes() {
-        let form = document.getElementById("quiz-form"),
-            formData = new FormData(form);
-        const { default: apiFetch } = await import('/js/utils/allFetch.js'),
-            $quizList = document.getElementById('quiz-form');
+        const { default: apiFetch } = await import('/js/utils/allFetch.js');
+             $quizList = document.getElementById('quiz-form');
         await apiFetch('/quizzes', {
-            method: "Get"
-        }).then(data =>{
+            method: "GET"
+        }).then(data => {
             console.log(data);
-            data.quizzes.forEach(quiz => {
+            // window.location.href='/dashboard/quizzes';
+            data.quizzes.forEach((quiz) => {
                 $quizList.innerHTML += `
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <div class="flex justify-between items-start mb-4">
@@ -114,21 +113,32 @@
                         <span class="text-sm text-gray-500">75% Completion Rate</span>
                     </div>
                     <div class="flex justify-between">
-                        <button class="text-indigo-600 hover:text-indigo-800">Edit</button>
+                        <a href="/dashboard/quizzes/${quiz.id}/update" class="text-indigo-600 hover:text-indigo-800">Edit</a>
                         <button class="text-green-600 hover:text-green-800">View Results</button>
-                        <button class="text-red-600 hover:text-red-800">Delete</button>
+                        <button class="text-red-600 hover:text-red-800" onclick="deleteQuiz(${quiz.id})">Delete</button>
                     </div>
                 </div>
-                `;
+            `;
             });
-        })
-            .catch((error)=>{
-               alert("errorcha")
-                });
+        }).catch(error => {
+            alert("Error fetching quizzes");
+            console.error(error);
+        });
     }
     quizzes();
-    function deleteQuiz(id) {
-        console.log(id);
+    async function deleteQuiz(id) {
+        if (confirm("Are you sure you want to delete this quiz?")) {
+            const { default: apiFetch } = await import('/js/utils/allFetch.js');
+            await apiFetch(`/quizzes/${id}`, {
+                method: "DELETE"
+            }).then(data =>{
+                window.location.href='/dashboard/quizzes'
+
+            })
+                .catch((error)=>{
+                    alert("No Connect :)")
+                    });
+        }
     }
 
 </script>

@@ -134,8 +134,8 @@
         let form = document.getElementById("quizForm"),
             formData = new FormData(form);
         const { default: apiFetch } = await import('/js/utils/allFetch.js');
-        await apiFetch('/quizzes', {
-            method: "Post", body: formData
+        await apiFetch(`/quizzes/${id}`, {
+            method: "Put", body: formData
         }).then(data =>{
             console.log(data);
         })
