@@ -19,6 +19,13 @@ class QuizController
             'quizzes' => $quizzes,
         ]);
     }
+    public function show(int $quizId): void
+    {
+
+        $quiz = (new Quiz())->find($quizId);
+      (new Question())->getWithOptions($quizId);
+
+    }
     public function store(): void
     {
         $quizItems = $this->validate([
@@ -92,4 +99,6 @@ class QuizController
             'massage' => 'successfully deleted'
         ]);
     }
+
+
 }
