@@ -8,6 +8,11 @@ trait Validator
     {
         $requiredKeys = [];
 
+        $updates = file_get_contents('php://input');
+        if ($data = json_decode($updates, true)) {
+            $_REQUEST = array_merge($_REQUEST, $data);
+        }
+
         foreach ($data as $key => $value ) {
             if (array_key_exists($key, $_REQUEST) and !empty($_REQUEST[$key])) {
                 continue;

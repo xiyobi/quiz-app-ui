@@ -1,6 +1,5 @@
 <?php require '../resources/views/components/header.php'; ?>
 <script src=" /js/dashboard/getUserInfo.js"></script>
-<script src=" /js/dashboard/add-quiz.js"></script>
 
 
 <div class="bg-gray-100">
