@@ -48,4 +48,12 @@ class Quiz extends DB
             ]);
     }
 
+    public function find(int $quizId)
+    {
+        $query = "SELECT * FROM quizzes WHERE id = :quiz_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([':quiz_id' => $quizId]);
+        return $stmt->fetch();
+    }
+
 }
