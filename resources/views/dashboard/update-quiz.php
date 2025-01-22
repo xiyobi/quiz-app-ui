@@ -335,7 +335,7 @@
         for (const [key, value] of formData.entries()) {
             if (key.includes('questions')) {
                 // Handle nested question data
-                const matches = key.match(/(?:\[(\d+)\])?(\w+)(?:\[(\w+)\])?/);
+                const matches = key.match(/questions\[(\d+)\]\[(\w+)\](\[\])?/);
                 if (matches) {
                     const [, questionIndex, field, isArray] = matches;
 

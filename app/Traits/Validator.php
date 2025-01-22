@@ -6,7 +6,7 @@ trait Validator
 {
     public function validate(array $data): array
     {
-        $requiredKeys = [];
+
 
         $updates = file_get_contents('php://input');
         if ($updates = json_decode($updates, true)) {
@@ -19,6 +19,7 @@ trait Validator
             }
             $requiredKeys[$key] = $key . 'is required';
         }
+
         if (!empty($requiredKeys)) {
             apiResponse([
                 'errors' => $requiredKeys], 400);
