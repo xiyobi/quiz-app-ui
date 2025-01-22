@@ -30,9 +30,10 @@ public function deleteByQuizId(int $questionId):bool
 }
 public function getWithOptions(int $quizId):array
 {
-    $stmt = $this->conn->prepare("SELECT * FROM questions WHERE quiz_id = :$quizId");
+    $stmt = $this->conn->prepare("SELECT * FROM questions WHERE quiz_id = :quizId");
     $stmt->execute([':quizId' => $quizId]);
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     $questionIds = array_column($questions, 'id');
     $placeholder=rtrim(str_repeat('?,', count($questionIds)), ',');
 
@@ -53,7 +54,7 @@ public function getWithOptions(int $quizId):array
     foreach ($questions as &$question) {
         $question['options'] = $groupedOptions[$question['id']] ?? [];
     }
-    apiResponse($questions);
+    return $questions;
 
 
 }

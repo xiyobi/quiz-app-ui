@@ -11,6 +11,7 @@ use Src\Auth;
 
 class QuizController
 {
+
     use Validator;
     public function index(): void
     {
@@ -21,9 +22,11 @@ class QuizController
     }
     public function show(int $quizId): void
     {
-
         $quiz = (new Quiz())->find($quizId);
-      (new Question())->getWithOptions($quizId);
+      $questions=(new Question())->getWithOptions($quizId);
+      $quiz->questions=$questions;
+
+        apiResponse($quiz);
 
     }
     public function store(): void
