@@ -29,6 +29,21 @@ class QuizController
         apiResponse($quiz);
 
     }
+ public function showByUniqueValue(string $uniqueValue)
+    {
+        $quiz = (new Quiz())->findByUniqueValue($uniqueValue);
+        if ($quiz) {
+            $questions=(new Question())->getWithOptions($quiz->id);
+            $quiz->questions=$questions;
+            apiResponse([
+                'error'=>['massage'=>'quiz not found']
+            ],404);
+        }
+
+
+        apiResponse($quiz);
+
+    }
     public function store(): void
     {
         $quizItems = $this->validate([

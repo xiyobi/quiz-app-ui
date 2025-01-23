@@ -10,11 +10,9 @@ class QuizController
 {
     public function take_quiz(string $uniqueValue)
     {
-        $quiz = (new Quiz())->findByUniqueValue($uniqueValue);
-        if ($quiz) {
-            view("quiz/take_quiz");
-        }
-        view('errors/404');
+        view('quiz/take_quiz',[
+            'uniqueValue'=>$uniqueValue
+        ]);
     }
 
 }

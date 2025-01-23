@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\Result;
 use App\Traits\Validator;
@@ -23,10 +24,18 @@ class ResultController
                 $quiz->id,
                 $quiz->time_limit
             );
-            exit();
-        }
+
         apiResponse([
-            'massage' => 'quiz not found'
+            'massage' => 'Result Created successfully',
+
         ]);
     }
+
+    apiResponse([
+        'errors'=>[
+            'massage' => 'User not found',
+        ],
+    ],401);
+    }
+
 }
