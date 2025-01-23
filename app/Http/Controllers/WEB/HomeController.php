@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\WEB;
 
+
+use JetBrains\PhpStorm\NoReturn;
+
 class HomeController
 {
     public function home(): void
@@ -20,5 +23,9 @@ class HomeController
     {
         view("auth/register");
     }
+    public function take_quiz(string $uniqueValue): void
+        {
+            view("quiz/take_quiz");
+        }
 
 }

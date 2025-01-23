@@ -107,7 +107,7 @@ class Router
         if (self::isApiCall()) {
             apiResponse(['error' => 'Not Found ishladi'], 404);
         }
-        view('404');
+        view('errors/404');
     }
     public static function middleware(?string $middleware=null):void
     {

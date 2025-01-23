@@ -6,6 +6,7 @@ function view($page, $data = []): void
 {
     extract($data);
     require 'resources/views/'.$page. '.php';
+    exit();
 }
 #[NoReturn] function redirect(string $url): void
 {

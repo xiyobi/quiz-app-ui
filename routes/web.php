@@ -1,6 +1,8 @@
 <?php
 
+
 use App\Http\Controllers\WEB\HomeController;
+use App\Http\Controllers\WEB\QuizController;
 use App\Http\Controllers\WEB\UserController;
 
 use Src\Router;
@@ -15,7 +17,9 @@ Router::get('/dashboard', [UserController::class, 'home']);
 Router::get('/dashboard/quizzes', [UserController::class, 'quizzes']);
 Router::get('/dashboard/create_quiz', [UserController::class, 'create_quiz']);
 Router::get('/dashboard/statistic', [UserController::class, 'statistic']);
-Router::get('/take_quiz', [UserController::class, 'take_quiz']);
+
+
+Router::get('/take_quiz/{id}', [QuizController::class, 'take_quiz']);
 
 Router::get('/dashboard/quizzes/{id}/update', [UserController::class, 'update']);
 
