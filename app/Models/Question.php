@@ -28,8 +28,9 @@ public function deleteByQuizId(int $questionId):bool
         ]);
 
 }
-public function getWithOptions(int $quizId):array
+public function getWithOptions(int $quizId)
 {
+//    dd($quizId);
     $stmt = $this->conn->prepare("SELECT * FROM questions WHERE quiz_id = :quizId");
     $stmt->execute([':quizId' => $quizId]);
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);

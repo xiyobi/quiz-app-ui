@@ -35,7 +35,7 @@ class ResultController
         'errors'=>[
             'massage' => 'User not found',
         ],
-    ],401);
+    ],404);
     }
 
 }

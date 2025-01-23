@@ -7,6 +7,7 @@ use App\Models\Option;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Traits\Validator;
+use JetBrains\PhpStorm\NoReturn;
 use Src\Auth;
 
 class QuizController
@@ -29,22 +30,19 @@ class QuizController
         apiResponse($quiz);
 
     }
- public function showByUniqueValue(string $uniqueValue)
-    {
-        $quiz = (new Quiz())->findByUniqueValue($uniqueValue);
-        if ($quiz) {
-            $questions=(new Question())->getWithOptions($quiz->id);
-            $quiz->questions=$questions;
-            apiResponse([
-                'error'=>['massage'=>'quiz not found']
-            ],404);
+     #[NoReturn] public function showByUniqueValue(string $uniqueValue): void
+     {
+         $quiz = (new Quiz())->findByUniqueValue($uniqueValue);
+            if ($quiz) {
+                $questions=(new Question())->getWithOptions($quiz['id']);
+                $quiz['questions']=$questions;
+                apiResponse($quiz);
+            }
+
+
         }
-
-
-        apiResponse($quiz);
-
-    }
     public function store(): void
+
     {
         $quizItems = $this->validate([
             'title' => 'string',

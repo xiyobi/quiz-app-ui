@@ -60,7 +60,7 @@ class Quiz extends DB
             $query = "SELECT * FROM quizzes WHERE unique_value = :uniqueValue";
             $stmt = $this->conn->prepare($query);
             $stmt->execute([':uniqueValue' => $uniqueValue]);
-            return $stmt->fetch();
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         }
 
 }

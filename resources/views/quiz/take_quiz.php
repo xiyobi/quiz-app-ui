@@ -30,8 +30,8 @@
 <main class="flex-grow container mx-auto px-4 py-8">
     <div id="start-card" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
         <div class="text-center">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Quiz Title</h2>
-            <p class="text-xl text-gray-700 mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolorem laudantium nisi?</p>
+            <h2 id="title" class="text-2xl font-bold text-gray-800 mb-4">Quiz Title</h2>
+            <p id = "description" class="text-xl text-gray-700 mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolorem laudantium nisi?</p>
 
             <div class="flex justify-center space-x-12 mb-8">
 
@@ -149,25 +149,7 @@
 <script>
     let startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', () => {
-        async function getQuizItems() {
-            const { default: apiFetch } = await import('/js/utils/allFetch.js');
-            await apiFetch('/login', {
-                method: "GET",
-                body: formData
-            }).then(data =>{
-                localStorage.setItem('token', data.token);
-                window.location.href='/dashboard';
-            })
-                .catch((error)=>{
-                    console.error(error.data.errors);
-                    document.getElementById('error').innerHTML = "";
-                    Object.keys(error.data.errors).forEach(err => {
-                        document.getElementById('error').innerHTML += `
-                <p class="text-red-500 mt-1">${error.data.errors[err]}</p>`;
 
-                    })
-                });
-        }
         let startQuizContainer = document.getElementById('start-card');
         startQuizContainer.classList.add('hidden');
         document.getElementById('questionContainer').classList.remove('hidden');
@@ -330,6 +312,26 @@
             });
         });
     });
+    async function getQuizItems() {
+        const { default: apiFetch } = await import('/js/utils/allFetch.js');
+        await apiFetch('/quizzes/<?php echo $uniqueValue ?>/getByUniqueValue', {
+            method: "GET",
+        }).then(data =>{
+            document.getElementById('title').innerText = data.title;
+            document.getElementById('description').innerText = data.description;
+            document.getElementById('time-taken').innerText = data.time_limit;
+        })
+            .catch((error)=>{
+                console.error(error.data.errors);
+                document.getElementById('error').innerHTML = "";
+                Object.keys(error.data.errors).forEach(err => {
+                    document.getElementById('error').innerHTML += `
+                <p class="text-red-500 mt-1">${error.data.errors[err]}</p>`;
+
+                })
+            });
+    }
+    getQuizItems();
     // Timer functionality
 
 </script>
