@@ -8,19 +8,19 @@
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
 <!-- Navigation -->
-<nav class="bg-white shadow-lg">
+<<nav class="bg-white shadow-lg">
     <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
             <div class="flex space-x-7">
                 <div>
-                    <a href="index.html" class="flex items-center py-4 px-2">
+                    <a href="/index" class="flex items-center py-4 px-2">
                         <span class="font-semibold text-gray-500 text-lg">Quiz Platform</span>
                     </a>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
-                <a href="dashboard.html" class="py-2 px-4 text-gray-500 hover:text-gray-700">Dashboard</a>
-                <a href="profile.html" class="py-2 px-4 text-gray-500 hover:text-gray-700">Profile</a>
+                <a href="/dashboard" class="py-2 px-4 text-gray-500 hover:text-gray-700">Dashboard</a>
+                <a href="/profile" class="py-2 px-4 text-gray-500 hover:text-gray-700">Profile</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,28 @@
 
 <!-- Main Content -->
 <main class="flex-grow container mx-auto px-4 py-8">
-    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <div id="results-card" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Quiz Title</h2>
+            <p class="text-xl text-gray-700 mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolorem laudantium nisi?</p>
+
+            <div class="flex justify-center space-x-12 mb-8">
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-blue-600" id="final-score">0/10</p>
+                    <p class="text-gray-600">Final Score</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-blue-600" id="time-taken">0:00</p>
+                    <p class="text-gray-600">Time Taken</p>
+                </div>
+            </div>
+
+            <a href="dashboard.html" class="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Return to Dashboard
+            </a>
+        </div>
+    </div>
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 hidden" id="questionContainer">
         <!-- Quiz Header -->
         <div class="flex justify-between items-center mb-6">
             <div>
@@ -96,8 +117,28 @@
             </button>
         </div>
     </div>
-</main>
+    <div id="results-card" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 hidden">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Quiz Complete!</h2>
+            <h3 class="text-xl text-gray-700 mb-6">JavaScript Fundamentals Quiz</h3>
 
+            <div class="flex justify-center space-x-12 mb-8">
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-blue-600" id="final-score">0/10</p>
+                    <p class="text-gray-600">Final Score</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-blue-600" id="time-taken">0:00</p>
+                    <p class="text-gray-600">Time Taken</p>
+                </div>
+            </div>
+
+            <a href="dashboard.html" class="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Return to Dashboard
+            </a>
+        </div>
+    </div>
+</main>
 <!-- Footer -->
 <footer class="bg-white shadow-lg mt-8">
     <div class="max-w-6xl mx-auto px-4 py-4">
@@ -242,10 +283,31 @@
         });
 
         document.getElementById('submit-quiz').addEventListener('click', () => {
+            if (currentQuestionIndex >= 2) {
+                currentQuestionIndex--;
+            }
             console.log(currentQuestionIndex);
-            // Handle quiz submission
+            console.log(questions[currentQuestionIndex]);
+            questions.splice(currentQuestionIndex, 1);
+            let question = takeQuiz(currentQuestionIndex),
+                questionElement = document.getElementById('question'),
+                questionContainer = document.getElementById('questionContainer');
+            if (question) {
+                questionElement.textContent = question.question;
+                options.innerHTML = '';
+                question.options.forEach((option) => {
+                    options.innerHTML += `
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="radio" name="answer" class="h-4 w-4 text-blue-600" value="${option.id}">
+                    <span class="ml-3">${option.option_text}</span>
+                </label>`
+                });
+            } else {
+                questionContainer.innerHTML = '';
+                document.getElementById('results-card').classList.remove('hidden');
+            }
         });
     });
 </script>
-</body>
-</html>
+
+require '../resources/views/components/footer.php';
