@@ -6,6 +6,13 @@ use App\Models\DB;
 
 class Result extends DB
 {
+    public function find(int $id)
+    {
+        $query = "SELECT * FROM results WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch();
+    }
     public function create(int $userId, int $quizId, int $limit)
     {
 

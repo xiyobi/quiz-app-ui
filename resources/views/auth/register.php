@@ -47,7 +47,7 @@
                     <a href="#" class="text-indigo-600 hover:text-indigo-500">Terms and Conditions</a>
                 </label>
             </div>
-                <div id="errors"></div>
+                <div id="error"></div>
 
             <div>
                 <button type="submit"
