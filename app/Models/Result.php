@@ -23,5 +23,16 @@ class Result extends DB
             'quizId' => $quizId,
             'finishedAt' => date('Y-m-d H:i:s', strtotime("+$limit minutes"))
         ]);
+        $resultId = $this->conn->lastInsertId();
+        return $this->find($resultId);
+    }
+
+    public function getUserResults(int $userId, int $quizId): mixed
+    {
+
+        $query = "SELECT * FROM results WHERE user_id = :userId AND quiz_id = :quizId";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['userId' => $userId, 'quizId' => $quizId]);
+        return $stmt->fetch();
     }
 }
