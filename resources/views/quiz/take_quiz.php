@@ -236,6 +236,7 @@
                         document.getElementById('result-time-taken').innerHTML = error.data.data.result.time_taken + ":00";
                         document.getElementById('result-title').innerHTML = error.data.data.result.quiz.title;
                         document.getElementById('result-description').innerHTML = error.data.data.result.quiz.title.description;
+                        document.getElementById('final-score').innerHTML = error.data.data.result.quiz.title.correct_answer_count + "/" + error.data.data.result.quiz.title.question_count;
                         document.getElementById("results-card").classList.remove('hidden');
                         document.getElementById("questionContainer").classList.add('hidden');
                     });

@@ -21,6 +21,8 @@ class ResultController
             $result = new Result();
             $userResult = $result->getUserResults(Auth::user()->id,$quiz->id);
             if ($userResult){
+                $correctAnswerCount=$userResult->getCorrectAnswer($quiz->id,Auth::user()->id)->correctAnswerCount;
+                $questionCount=( new Question())->getQuestionsByQuizId($quiz->id)->correctAnswerCount;
                 $startedAt = strtotime($userResult->started_at);
                 $finishedAt =strtotime($userResult->finished_at);
                 $diff=abs($finishedAt-$startedAt);
@@ -37,7 +39,9 @@ class ResultController
                             'id'=>$userResult->id,
                             'quiz'=>$quiz,
                             'started_at'=>$userResult->started_t,
-                            'time_taken'=>floor(($diff-$years*365*60*60*24-$months*30*60*60*24-$days*60*60*24)/60)
+                            'time_taken'=>floor(($diff-$years*365*60*60*24-$months*30*60*60*24-$days*60*60*24)/60),
+                            'correct_answer_count'=>$correctAnswerCount['correctAnswerCount'],
+                            'question_count'=>$questionCount['questionCount']
                         ]
                     ]
                 ],400);

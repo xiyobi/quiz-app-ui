@@ -24,4 +24,16 @@ class Answer extends DB
         ]);
 //        $answerId = $this->conn->lastInsertId();
     }
+
+    public function getCorrectAnswer(int $quizId, int $userId): ?array
+    {
+        $query = "SELECT count(answers.id) as correctResultCount FROM answers
+            JOIN results ON answers.result_id = results.id
+            JOIN options ON answers.option_id = options.id
+            WHERE results.user_id = :userId and results.quiz_id = :quizId AND options.is_correct = true";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['userId' => $userId, 'quizId' => $quizId]);
+        return $stmt->fetch();
+    }
 }
