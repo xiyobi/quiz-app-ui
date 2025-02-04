@@ -4,19 +4,16 @@ namespace App\Models;
 
 use App\Models\DB;
 
-class Result extends DB
-{
-    public function find(int $id)
-    {
+class Result extends DB {
+    public function find (int $id) {
         $query = "SELECT * FROM results WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(['id' => $id]);
         return $stmt->fetch();
     }
-    public function create(int $userId, int $quizId, int $limit)
-    {
-
-        $query = "INSERT INTO results (user_id, quiz_id, started_at, finished_at)VALUES(:userId, :quizId, NOW(), :finishedAt)";
+    public function create (int $userId, int $quizId, int $limit) {
+        $query = "INSERT INTO results (user_id, quiz_id, started_at, finished_at)
+            VALUES (:userId, :quizId, NOW(), :finishedAt)";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
             'userId' => $userId,
@@ -27,12 +24,13 @@ class Result extends DB
         return $this->find($resultId);
     }
 
-    public function getUserResults(int $userId, int $quizId): mixed
-    {
-
+    public function getUserResult (int $userId, int $quizId) {
         $query = "SELECT * FROM results WHERE user_id = :userId AND quiz_id = :quizId";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(['userId' => $userId, 'quizId' => $quizId]);
+        $stmt->execute([
+            'userId' => $userId,
+            'quizId' => $quizId
+        ]);
         return $stmt->fetch();
     }
 }
