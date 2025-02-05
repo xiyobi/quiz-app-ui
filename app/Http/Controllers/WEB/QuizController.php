@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers\WEB;
 
-
 use App\Models\Quiz;
 
-
-class QuizController
-{
-    public function take_quiz(string $uniqueValue)
-    {
-        view('quiz/take_quiz',[
-            'uniqueValue'=>$uniqueValue
+class QuizController {
+    public function takeQuiz (string $uniqueValue): void {
+        view('quiz/take-quiz',[
+            'uniqueValue' => $uniqueValue
         ]);
     }
-
 }

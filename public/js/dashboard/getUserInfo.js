@@ -1,14 +1,13 @@
-
 async function user() {
-
-    const { default: apiFetch } = await  import('../../js/utils/allFetch.js');
-    await apiFetch('/users/getInfo', {
-    method: "Get"
-}).then(user =>{
-    document.getElementById('username').innerText = user.user.full_name;
-})
-    .catch((error)=>{
-    window.location.href='/login';
-});
+    const {default: apiFetch} = await import('../utils/apiFetch.js');
+    await apiFetch('/users/getInfo', {method: 'GET'})
+        .then((user) => {
+            document.getElementById('userName').innerText = user.data.full_name;
+        })
+        .catch((error) => {
+            if (error.status == 401) {
+                window.location.href = '/login';
+            }
+        });
 }
-    user();
+user();

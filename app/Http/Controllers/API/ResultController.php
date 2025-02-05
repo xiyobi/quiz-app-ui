@@ -49,7 +49,7 @@ class ResultController {
                                     $days * 60*60*24 - $hours * 60*60) / 60),
                             'correct_answer_count'=>$correctAnswerCount,
                             'question_count'=>$questionCount
-                        ]
+                ]
                     ]
                 ], 400);
             }

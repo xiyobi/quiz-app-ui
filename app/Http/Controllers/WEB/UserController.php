@@ -2,33 +2,23 @@
 
 namespace App\Http\Controllers\WEB;
 
-class UserController
-{
-    public function home():void
-    {
+class UserController {
+    public function home () {
         view('dashboard/home');
     }
-    public function create_quiz():void
-    {
-        view('dashboard/create-quiz');
-    }
-    public function quizzes():void
-    {
+    public function quizzes () {
         view('dashboard/quizzes');
     }
-    public function statistic():void
-    {
-        view('dashboard/statistic');
+    public function createQuiz () {
+        view('dashboard/create-quiz');
     }
-    public function take_quiz():void
-    {
-        view('/quiz/take_quiz');
-    }
-    public function update(int $id):void
-    {
-        view('dashboard/update-quiz',
-        ['id'=>$id]
-        );
+    public function statistics () {
+        view('dashboard/statistics');
     }
 
+    public function update (int $id) {
+        view('dashboard/update-quiz', [
+            'id' => $id
+        ]);
+    }
 }

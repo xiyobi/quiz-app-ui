@@ -1,9 +1,7 @@
 <?php
 
-use Src\middleware\AuthMiddleware;
+use \Src\middlewares\AuthMiddleware;
 
-
-
-return[
+return [
     'auth:api'=>AuthMiddleware::class,
 ];

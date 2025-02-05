@@ -129,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const questions = document.querySelectorAll('[data-question-id]');
         questions.forEach((question, index) => {
             const questionNum = index + 1;
-
             question.dataset.questionId = questionNum;
 
             const questionInput = question.querySelector('input[type="text"]');

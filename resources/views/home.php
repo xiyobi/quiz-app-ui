@@ -35,7 +35,7 @@
     <div class="hidden mobile-menu md:hidden pl-3">
         <a href="#features" class="block my-2 text-xl text-gray-600 hover:text-gray-900">Features</a>
         <a href="#how-it-works" class="block my-2 text-xl text-gray-600 hover:text-gray-900">How It Works</a>
-        <a href="login.html" class="block my-2 text-xl text-gray-600 hover:text-gray-900">Login</a>
+        <a href="/login" class="block my-2 text-xl text-gray-600 hover:text-gray-900">Login</a>
         <a href="add-quiz.php"
            class="block my-2 text-xl inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
             Register

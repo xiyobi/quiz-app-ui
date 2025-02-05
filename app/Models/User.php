@@ -21,13 +21,14 @@ class User extends DB{
         $this->createApiToken($userId);
         return true;
     }
+    // abdullajon@gmail.com 123456789
     public function getUser (string $email, string $password) {
         $query = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn
             ->prepare($query);
         $stmt->execute([
-            ':email' => $email,
-        ]);
+                ':email' => $email,
+            ]);
         $user = $stmt->fetch();
         if ($user && password_verify($password, $user->password)) {
             $this->createApiToken($user->id);
@@ -40,9 +41,10 @@ class User extends DB{
         $stmt = $this->conn
             ->prepare($query);
         $stmt->execute([
-            ':id' => $id,
-        ]);
+                ':id' => $id,
+            ]);
 
         return $stmt->fetch();
     }
 }
+

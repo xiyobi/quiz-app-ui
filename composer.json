@@ -1,14 +1,13 @@
 {
     "require": {
         "vlucas/phpdotenv": "^5.6",
-        "larapack/dd": "^1.1",
       "ext-pdo": "*",
-        "free2one/php-accessor": "~0.5.0"
+        "larapack/dd": "^1.1"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Src\\": "src/"
+          "Src\\": "src/"
         }
     }
 }

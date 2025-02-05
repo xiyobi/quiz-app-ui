@@ -6,7 +6,7 @@ use App\Models\DB;
 
 class Option extends DB {
     public function create (int $questionId, string $questionText, bool $isCorrect): int {
-        $query = "INSERT INTO options (question_id, option_text, is_correct, updated_at, created_at) 
+        $query = "INSERT INTO options (question_id,option_text, is_correct, updated_at, created_at) 
             VALUES (:questionId,:optionText,:isCorrect, NOW(),NOW())";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
