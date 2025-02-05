@@ -6,7 +6,7 @@
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 Already have an account?
-                <a href="login.html" class="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
                     Sign in
                 </a>
             </p>

@@ -10,7 +10,7 @@ trait HasApiTokens {
             VALUES (:userId, :token,:expiresAt, NOW())";
 
         $this->api_token = bin2hex(random_bytes(40));
-        $this->duration = date('Y-m-d H:i:s', strtotime('+' . $_ENV['API_TOKEN_EXPIRATION_DAY'] .' day'));
+        $this->duration = date('Y-m-d H:i:s', strtotime('+' . $_ENV['API_TOKEN_EXPIRATION_DAYS'] .' day'));
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
