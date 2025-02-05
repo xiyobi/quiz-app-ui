@@ -21,7 +21,6 @@ class User extends DB{
         $this->createApiToken($userId);
         return true;
     }
-    // abdullajon@gmail.com 123456789
     public function getUser (string $email, string $password) {
         $query = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn

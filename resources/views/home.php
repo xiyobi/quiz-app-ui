@@ -1,10 +1,18 @@
-<?php require '../resources/views/components/header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="<?php echo assets('/css/tailwind.css')?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body class="bg-gradient-to-b from-gray-50 to-gray-100">
 <nav class="bg-white shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
-                <a href="/home"> <h1 class="text-2xl font-bold text-indigo-600">Quiz App</h1></a>
+                <a href="#"><h1 class="text-2xl font-bold text-indigo-600">Quiz App</h1></a>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-4">
@@ -27,8 +35,8 @@
     <div class="hidden mobile-menu md:hidden pl-3">
         <a href="#features" class="block my-2 text-xl text-gray-600 hover:text-gray-900">Features</a>
         <a href="#how-it-works" class="block my-2 text-xl text-gray-600 hover:text-gray-900">How It Works</a>
-        <a href="/login" class="block my-2 text-xl text-gray-600 hover:text-gray-900">Login</a>
-        <a href="/register"
+        <a href="login.html" class="block my-2 text-xl text-gray-600 hover:text-gray-900">Login</a>
+        <a href="add-quiz.php"
            class="block my-2 text-xl inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
             Register
         </a>
@@ -51,7 +59,7 @@
                 </p>
                 <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
                     <div class="rounded-md shadow">
-                        <a href="/register"
+                        <a href="add-quiz.php"
                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:px-10">
                             Create Your First Quiz
                         </a>
@@ -171,7 +179,7 @@
             </div>
 
             <div class="mt-10 text-center">
-                <a href="/register"
+                <a href="add-quiz.php"
                    class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                     Start Creating Now
                 </a>
@@ -227,4 +235,5 @@
         });
     </script>
 </main>
-<?php require '../resources/views/components/footer.php'; ?>
+</body>
+</html>
